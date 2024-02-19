@@ -25,7 +25,7 @@ If there is no *data.txt* in your folder, then you MUST create one.
 I did not add automatic checks for this (yet), because I am lazy.  
 The file can be empty, it just needs to exist.  
 
-Messages always start with '!' and end with '$'.  
+Messages always start with '$' and end with '!'.  
 Individual components of the message are separated with ';'.  
 The data type is declared with 3 characters followed by a ':'.  
 Numbers are written out as string with fixed lengths: integers '1234' and floats '12.4567'.  
