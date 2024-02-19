@@ -1,2 +1,6 @@
 # ignore pycache
 __pycache__
+
+# don't push useless data updates all the time
+# changes in this file are expected and not meaningful
+data.txt

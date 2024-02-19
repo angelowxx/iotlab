@@ -15,13 +15,25 @@ Build *serialreader.c* into an executable with your preferred method.
 This project was made and tested on a Windows machine and *serialreader.c* currently targets the Windows platform.  
 Feel free to make small adjustments to make it run on your operating system.
 
+*serialreader.c* takes one commandline parameter to determine how many messages it should receive.  
+Provide any positive integer for a limited amount of numbers or a negative integer for infinite reads.
+
 Data Format
 -----------
+
+If there is no *data.txt* in your folder, then you MUST create one.  
+I did not add automatic checks for this (yet), because I am lazy.  
+The file can be empty, it just needs to exist.  
 
 Messages always start with '!' and end with '$'.  
 Individual components of the message are separated with ';'.  
 The data type is declared with 3 characters followed by a ':'.  
 Numbers are written out as string with fixed lengths: integers '1234' and floats '12.4567'.  
+
+Example *data.txt*
+```
+$;lux:0029;hum:51.1413;tmp:19.5788;gyr:-0.0156;acc: 0.1152;!
+```
 
 Start *serialreader.exe* to begin reading COM4 and output contents to *data.txt*.
 
