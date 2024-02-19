@@ -47,13 +47,13 @@ python server.py
 
 Alternatively, this command can be used with additional custom parameters.
 ```
-python -m Flask --app server run
+python -m flask --app server run
 ```
 
 Consider this to make the app visible from outside your own machine.  
 As a bonus, this allows others to run python scripts on your machine which can be very fun!
 ```
-python -m Flask --app server run --host 0.0.0.0
+python -m flask --app server run --host 0.0.0.0
 ```
 
 If you are being flooded with requests, you may want to adjust the interval for AJAX in *index.html*.
