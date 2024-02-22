@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>LRCC</title>
-        <!-- <script type=text/javascript src="{{url_for('static', filename='js/readdata.js')}}"></script> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
+<head>
+    <title>LRCC</title>
+    <!-- <script type=text/javascript src="{{url_for('static', filename='js/readdata.js')}}"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
 
-    <body>
-        <h1>Lazy Resident Control Center</h1>
-        <p>where your dreams can rest</p>
+<body>
+    <h1>Lazy Resident Control Center</h1>
+    <p>where your dreams can rest</p>
 
-        <h2>Washing Room Assistant</h2>
-        <div>Washing Machine Status:</div>
-        <div id="wsm"></div>
-            <!-- Data will be inserted here dynamically -->
+    <h2>Washing Room Assistant</h2>
+    <div>Washing Machine Status:</div>
+    <div id="wsm"></div>
+    <!-- Data will be inserted here dynamically -->
 
-        <div>Washing Room Humidity:</div>
-        <div id="hum"></div>
-            <!-- Data will be inserted here dynamically -->
+    <div>Washing Room Humidity:</div>
+    <div id="hum"></div>
+    <!-- Data will be inserted here dynamically -->
 
-        <h2>Temperature Monitoring</h2>
-        <div>Current Temperature:</div>
-        <div id="tmp"></div>
+    <h2>Temperature Monitoring</h2>
+    <div>Current Temperature:</div>
+    <div id="tmp"></div>
 
-        <div>Adjusted Temperature:</div>
-        <div id="tmp2"></div>
+    <div>Adjusted Temperature:</div>
+    <div id="tmp2"></div>
 
-        <h2>Fridge Light Knowledge Probe</h2>
-        <div id="lux"></div>
+    <h2>Fridge Light Knowledge Probe</h2>
+    <div>The toilet might be freed in </div>
+    <div id="lux"></div>
+    <div>seconds. (Based on previous data, the result might be under 0 seconds)</div>
 
-        <script>
-            $(document).ready(function() {
-                // Function to fetch data from the Flask server
-                function fetchData() {
-                    $.get('/get_data', function(response) {
-                        // Update the webpage with the fetched data
-                        $('#wsm').text(response.wsm);
-                        $('#hum').text(response.hum);
-                        $('#tmp').text(response.tmp);
-                        $('#tmp2').text(response.tmp2);
-                        $('#lux').text(response.lux);
-                    });
-                }
+    <script>
+        $(document).ready(function () {
+            // Function to fetch data from the Flask server
+            function fetchData() {
+                $.get('/get_data', function (response) {
+                    // Update the webpage with the fetched data
+                    $('#wsm').text(response.wsm);
+                    $('#hum').text(response.hum);
+                    $('#tmp').text(response.tmp);
+                    $('#tmp2').text(response.tmp2);
+                    $('#lux').text(response.lux);
+                });
+            }
 
-                // Call the fetchData function initially
-                fetchData();
+            // Call the fetchData function initially
+            fetchData();
 
-                // Set an interval to fetch data every 5 seconds (for example)
-                setInterval(fetchData, 1000); // Adjust the interval as needed
-            });
-        </script>
-    </body>
+            // Set an interval to fetch data every 5 seconds (for example)
+            setInterval(fetchData, 1000); // Adjust the interval as needed
+        });
+    </script>
+</body>
 
 </html>

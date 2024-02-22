@@ -2,11 +2,13 @@ from flask import Flask
 from flask import render_template
 from flask import jsonify
 from datetime import datetime
+from UsageTimePredict import UsageTimePredict
 
 app = Flask(__name__)
 last_movement = datetime(year=2020, month=1, day=1, hour=0, minute=0, second=0)
+usageTimePredict = UsageTimePredict()
 
-lux = 'off'
+lux = 0.0
 lux_threshold = 100
 hum = 0.0
 tmp = 0.0
@@ -32,10 +34,10 @@ def get_data():
         data = file.read().split(';')
 
         if (int(data[1].split(':')[1]) >= lux_threshold):
-            lux = 'on'
+            lux = usageTimePredict.update(True)
 
         else:
-            lux = 'off'
+            lux = usageTimePredict.update(False)
 
         hum = data[2].split(':')[1] + ' %'
 
