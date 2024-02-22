@@ -11,6 +11,7 @@ class UsageTimePredict:
         self.averageUsageTime_morning = 600
         self.averageUsageTime_evening = 1000
         self.alpha = 0.9
+        self.beta = 1.1
         self.preStatus = False
 
     def update(self, status):
@@ -28,7 +29,7 @@ class UsageTimePredict:
             else:
                 result = 0
         self.preStatus = status
-        return result
+        return result/60
 
     def statusOn(self):
         self.startTime = datetime.now()
@@ -47,9 +48,9 @@ class UsageTimePredict:
         #self.endTime = self.endTime.strftime("%Y-%m-%d %H:%M:%S")
         total_seconds = (self.endTime - self.startTime).total_seconds()
         if(self.endTime.hour<11 and self.endTime.hour>4):
-            predict = self.averageUsageTime_morning-total_seconds
+            predict = self.averageUsageTime_morning*self.beta-total_seconds
         else :
-            predict = self.averageUsageTime_evening-total_seconds
+            predict = self.averageUsageTime_evening*self.beta-total_seconds
         
         return predict
     
