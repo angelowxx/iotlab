@@ -34,10 +34,10 @@ def get_data():
         data = file.read().split(';')
 
         if (int(data[1].split(':')[1]) >= lux_threshold):
-            lux = usageTimePredict.update(True)
+            lux = usageTimePredict.update(False)
 
         else:
-            lux = usageTimePredict.update(False)
+            lux = usageTimePredict.update(True)
 
         hum = data[2].split(':')[1] + ' %'
 
